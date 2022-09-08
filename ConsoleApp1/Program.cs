@@ -29,13 +29,10 @@
 
             static bool validateMethod()
             {
-                Console.WriteLine("Do you want to continue playing? y/n");
+                Console.Write("Do you want to continue playing? y/n");
                 string answer = Console.ReadLine();
-                if (answer.Equals("y"))
-                {
-                    return true;
-                }
-                else if (answer.Equals("n")) { return false; }
+                if (answer.ToLower().Equals("y")){ return true;}
+                else if (answer.ToLower().Equals("n")) { return false; }
                 else
                 {
                     Console.WriteLine("Not one of the options");
