@@ -9,25 +9,23 @@
             Random random = new Random();
             while (game)
             {
-                int a = random.Next(1, 7);
-                int b = random.Next(1, 7);
-                int userSum = a + b;
-                Console.WriteLine($"Your first roll is  {a}, your second roll is {b}, your total sum is {userSum}");
-                int x = random.Next(1, 7);
-                int d = random.Next(1, 7);
-                if ((x + d) > userSum)
+                int[] rolls = Enumerable
+                    .Repeat(0, 4)
+                    .Select(i => random.Next(1, 7))
+                    .ToArray();
+
+                Console.WriteLine($"Your first roll is  {rolls[0]}, your second roll is {rolls[1]}, your total sum is {rolls[0] + rolls[1]}");
+                if ((rolls[0] + rolls[1]) > rolls[2] + rolls[3])
                 {
-                    Console.WriteLine($"The computer scored higher you've lost, the computer scored {x + d}");
+                    Console.WriteLine($"The computer scored higher you've lost, the computer scored {rolls[2] + rolls[3]} with rolls of {rolls[2]} and {rolls[3]}");
                     game = validateMethod();
                 }
                 else
                 {
-                    Console.WriteLine($"The computer has lost, it scored {x + d}");
+                    Console.WriteLine($"The computer has lost, it scored {rolls[2] + rolls[3]} with rolls of {rolls[2]} and {rolls[3]}");
+                    game = validateMethod();
                 }
             }
-
-
-
 
             static bool validateMethod()
             {
@@ -41,8 +39,8 @@
                 else
                 {
                     Console.WriteLine("Not one of the options");
-                    bool answer2 = validateMethod();
-                    return answer2;
+                    bool playOn = validateMethod();
+                    return playOn;
                 }
             }
         }
