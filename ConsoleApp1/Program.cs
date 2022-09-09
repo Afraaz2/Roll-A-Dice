@@ -20,9 +20,14 @@
                     Console.WriteLine($"The computer scored higher you've lost, the computer scored {rolls[2] + rolls[3]} with rolls of {rolls[2]} and {rolls[3]}");
                     game = validateMethod();
                 }
-                else
+                else if((rolls[0] + rolls[1]) < rolls[2] + rolls[3])
                 {
                     Console.WriteLine($"The computer has lost, it scored {rolls[2] + rolls[3]} with rolls of {rolls[2]} and {rolls[3]}");
+                    game = validateMethod();
+                }
+                else
+                {
+                    Console.WriteLine("The game is a draw");
                     game = validateMethod();
                 }
             }
